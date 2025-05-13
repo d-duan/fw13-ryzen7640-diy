@@ -20,6 +20,11 @@ Cut PTM to size (slightly larger helped covering the edges, I've found.) Lift of
 
 Next, AX210 card, the new hinges, the bezel, the RAMs & SSD, and finally, the keyboards. Follow FW's guides and make sure to read the comments under each step—it will go smoothly!
 
+One thing to note re: keyboard installation is a crucial point of cable management. It's something that the guide doesn't state very clearly.\
+Looking at my FW13 on arrival, on the right hand side near the hinge, the pair of webcam+antenna cables (thin, black & white) is threaded **above** a thicker, black cable that runs from the top cover to the memory modules. However, to make sure that the keyboard fits flush to the chassis around the fingerprint reader area, the cabling needs to be re-arranged like so in the picture below:
+![re-cabling](https://raw.githubusercontent.com/d-duan/fw13-ryzen7640-diy/refs/heads/main/reroute_cable.jpg)
+Make sure that the pair of webcam+antenna cables are **underneath** the black cable, so that they are as low to the bottom plate as possible. This should help the keyboard sit flush to the chassis.
+
 #### Installation
 Running Windows 11 IoT LTSC 2024.\
 Latest drivers and BIOS packages downloaded via FW's official site.\
@@ -29,6 +34,7 @@ AX210's WIFI 6E and BT drivers downloaded via Intel's official site.
 > You will need another Windows machine to create a bootable usb
 
 Follow FW's official [guide](https://guides.frame.work/Guide/Windows+11+Installation+on+the+Framework+Laptop+13+(AMD+Ryzen%E2%84%A2+Series)/214) and make a bootable usb with the LTSC image using Rufus to bypass the network requirement (AMD build specific).\
+Refer to [this thread](https://community.frame.work/t/solved-usb-audio-problems-with-framework-16/60636) for a potential audio issue & fix.
 
 
 
