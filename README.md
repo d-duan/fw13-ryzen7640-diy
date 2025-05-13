@@ -14,17 +14,21 @@
 - [x] 40x80mm of Honeywell PTM7950 via aliexpress
 
 #### Assembly
+First up, I'm going to replace the stock liquid metal with Honeywell, following a detailed write-up from [Michael Wu](https://community.frame.work/t/honeywell-ptm7950-phase-change-thermal-pads-sheets-application-tips-and-results/20245) via FW forum.\
+Refrigerate the PTM7950, disassemble the fan + heat sink following FW's guide.\
+Cut PTM to size (slightly larger helped covering the edges, I've found.) Lift off plastic film on one side, apply, knead, then remove the second plastic film. Using small tweezers helps here, as lifting the 2nd plastic film too fast could lift some of the PTM, too.
 
+Next, AX210 card, the new hinges, the bezel, the RAMs & SSD, and finally, the keyboards. Follow FW's guides and make sure to read the comments under each step—it will go smoothly!
 
-#### OS & Drivers 
+#### Installation
 Running Windows 11 IoT LTSC 2024.\
 Latest drivers and BIOS packages downloaded via FW's official site.\
 AX210's WIFI 6E and BT drivers downloaded via Intel's official site.
 
+> [!NOTE]
+> You will need another Windows machine to create a bootable usb
 
-#### Installation
-Follow FW's official [guide](https://guides.frame.work/Guide/Windows+11+Installation+on+the+Framework+Laptop+13+(AMD+Ryzen%E2%84%A2+Series)/214).\
-Make a boot usb with the LTSC image using Rufus to bypass the network requirement (AMD build specific).\
+Follow FW's official [guide](https://guides.frame.work/Guide/Windows+11+Installation+on+the+Framework+Laptop+13+(AMD+Ryzen%E2%84%A2+Series)/214) and make a bootable usb with the LTSC image using Rufus to bypass the network requirement (AMD build specific).\
 
 
 
