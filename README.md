@@ -58,7 +58,7 @@ To revert back to the classic RMB click context menu, use the following command 
 reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
 ```
 This forces (/f) an emtpy value (/ve and then nothing) onto the Default value, which points to the .dll that launches the Windows 11 new context menu UI (see image below.)
-
+![Reg location](https://raw.githubusercontent.com/d-duan/fw13-ryzen7640-diy/refs/heads/main/classic%20RMB%20menu.png)
 To restore the new UI, change the Default value back to the .dll:
 ```
 reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve /d "C:\Windows\System32\Windows.UI.FileExplorer.dll"
