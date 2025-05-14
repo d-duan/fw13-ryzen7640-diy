@@ -51,3 +51,15 @@ wsreset -i
 ... and bring back [App Installer](https://apps.microsoft.com/detail/9nblggh4nns1?hl=en-US&gl=AU), Sticky Notes, Paint, Windows Notepad, Calculator etc
 
 Also, MAS' guide points to [this de-telemetry guide](https://gist.github.com/ave9858/a2153957afb053f7d0e7ffdd6c3dcb89) by ave9858. Further debloating could be needed but I will leave it for now. Running LTSC is already without most of the annoying ms features.
+
+
+To revert back to the classic RMB click context menu, use the following command in cmd to alter a reg value:
+```
+reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
+```
+This forces (/f) an emtpy value (/ve and then nothing) onto the Default value, which points to the .dll that launches the Windows 11 new context menu UI (see image below.)
+
+To restore the new UI, change the Default value back to the .dll:
+```
+reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve /d "C:\Windows\System32\Windows.UI.FileExplorer.dll"
+```
