@@ -65,9 +65,9 @@ reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\
 ```
 
 
-### Modern Standby/S0
+### Modern Standby (S0)
 
-Use the commands below to set both battery & plugged S0 to be Network Disconnected:
+Use the commands below to set both battery & plugged S0 to be Network Disconnected even when the option to toggle it is hidden in Control Pane/Power Options:
 ```
 POWERCFG -SETACVALUEINDEX SCHEME_CURRENT SUB_NONE CONNECTIVITYINSTANDBY 0
 POWERCFG -SETDCVALUEINDEX SCHEME_CURRENT SUB_NONE CONNECTIVITYINSTANDBY 0
