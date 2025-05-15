@@ -8,9 +8,9 @@
 #### Workflow Enhancement
 + Everything > file system indexing and search
 + ueil > programs launch, web search, calculator etc.
-+ MS Powertoy > keep wake,
++ MS Powertoy
 + ThreeFingerDragOnWindows ([Github](https://github.com/ClementGre/ThreeFingerDragOnWindows)) > bring back three finger drag & select because I prefer it
-
++ Quick Look ([Github](https://github.com/QL-Win/QuickLook)) > space-bar file preview
 
 #### OS Customisation
 + f.lux > better night shift
