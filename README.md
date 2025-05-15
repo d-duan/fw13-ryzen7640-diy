@@ -42,7 +42,7 @@ Refer to [this thread](https://community.frame.work/t/solved-usb-audio-problems-
 
 ## Notes
 
-### OS 
+### MS Apps 
 
 IoT LTSC 2024 is a very lean version of Windows 11. However, to bring back some of the enhanced apps from the GAC version, reinstall ms store...
 ```
@@ -52,6 +52,7 @@ wsreset -i
 
 Also, MAS' guide points to [this de-telemetry guide](https://gist.github.com/ave9858/a2153957afb053f7d0e7ffdd6c3dcb89) by ave9858. Further debloating could be needed but I will leave it for now. Running LTSC is already without most of the annoying ms features.
 
+### RMB Context Menu
 
 To revert back to the classic RMB click context menu, use the following command in cmd to alter a reg value:
 ```
@@ -64,11 +65,24 @@ To restore the new UI, change the Default value back to the .dll:
 reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve /d "C:\Windows\System32\Windows.UI.FileExplorer.dll"
 ```
 
-
 ### Modern Standby (S0)
 
-Use the commands below to set both battery & plugged S0 to be Network Disconnected even when the option to toggle it is hidden in Control Pane/Power Options:
+Windows' Modern Standby is notorious for its unreliability. I'm taking some steps to tweak it to my habit and liking:
+
+I use the commands below to set both battery & plugged S0 to be Network Disconnected, even when the option to toggle it is hidden in Control Pane/Power Options:
 ```
-POWERCFG -SETACVALUEINDEX SCHEME_CURRENT SUB_NONE CONNECTIVITYINSTANDBY 0
-POWERCFG -SETDCVALUEINDEX SCHEME_CURRENT SUB_NONE CONNECTIVITYINSTANDBY 0
+powercfg -setacvalueindex scheme_current sub_none connectivityinstandby 0
+powercfg -setdcvalueindex scheme_current sub_none connectivityinstandby 0
+```
+Since I won't need my device to stay connected to the internet or bluetooth while sleeping (if needed, I can keep the machine awake with MS Powertoys,) Disconnected Standby ensures that no network traffic can wake my computer up, though the LTSC version already promises much, much reduced frequency of Windows fetching for updates. FWIW, AX210's wake on WoWLAN/magic packet/pattern match is also turned off in Device Manager/{the WiFi card}/Properties/Advanced.
+
+Using powercfg /SleepStudy, I can see that my laptop slept like a baby last night, with ~4% battery drain over just a bit over 5 hours, in line with Microsoft's S0 targets:
+
+![sleepstufy](https://raw.githubusercontent.com/d-duan/fw13-ryzen7640-diy/refs/heads/main/sleepstudy.png)
+
+Here, I'm going to change the Standby Budget to 3% as a personal preference—I value conserved battery level over ~5s of wait from hibernation to wake;)
+
+```
+powercfg /setacvalueindex scheme_current sub_none standbybudgetpercent 3
+powercfg /setdcvalueindex scheme_current sub_none standbybudgetpercent 3
 ```
