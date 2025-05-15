@@ -3,9 +3,9 @@
 > Documentation and notes for my FW13 AMD build.\
 > Last updated: May 2025
 
-### Documentation
+## Documentation
 
-#### Components
+### Components
 - [x] AMD Ryzen 7640u
 - [x] Crucial DDR5 5600MHz SODIMM CT2K16G56C46S5, 2x16 GB
 - [x] SK hynix Gold P31, 2TB
@@ -13,7 +13,7 @@
 - [x] General upgrades: 4kg hinge set, 61W battery, and the new 2.8k matte display kit
 - [x] 40x80mm of Honeywell PTM7950 via aliexpress
 
-#### Assembly
+### Assembly
 First up, I'm going to replace the stock liquid metal with Honeywell, following a detailed write-up from [Michael Wu](https://community.frame.work/t/honeywell-ptm7950-phase-change-thermal-pads-sheets-application-tips-and-results/20245) via FW forum.\
 Refrigerate the PTM7950, disassemble the fan + heat sink following FW's guide.\
 Cut PTM to size (slightly larger helped covering the edges, I've found.) Lift off plastic film on one side, apply, knead, then remove the second plastic film. Using small tweezers helps here, as lifting the 2nd plastic film too fast could lift some of the PTM, too.
@@ -25,7 +25,7 @@ Looking at my FW13 on arrival, on the right hand side near the hinge, the pair o
 ![re-cabling](https://raw.githubusercontent.com/d-duan/fw13-ryzen7640-diy/refs/heads/main/reroute_cable.jpg)
 Make sure that the pair of webcam+antenna cables are **underneath** the black cable, so that they are as low to the bottom plate as possible. This should help the keyboard sit flush to the chassis.
 
-#### Installation
+### Installation
 Running Windows 11 IoT LTSC 2024.\
 Latest drivers and BIOS packages downloaded via FW's official site.\
 AX210's WIFI 6E and BT drivers downloaded via Intel's official site.
@@ -40,9 +40,9 @@ Refer to [this thread](https://community.frame.work/t/solved-usb-audio-problems-
 
 ---
 
-### Notes
+## Notes
 
-#### OS 
+### OS 
 
 IoT LTSC 2024 is a very lean version of Windows 11. However, to bring back some of the enhanced apps from the GAC version, reinstall ms store...
 ```
@@ -62,4 +62,13 @@ This forces (/f) an emtpy value (/ve and then nothing) onto the Default value, w
 To restore the new UI, change the Default value back to the .dll:
 ```
 reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve /d "C:\Windows\System32\Windows.UI.FileExplorer.dll"
+```
+
+
+### Modern Standby/S0
+
+Use the commands below to set both battery & plugged S0 to be Network Disconnected:
+```
+POWERCFG -SETACVALUEINDEX SCHEME_CURRENT SUB_NONE CONNECTIVITYINSTANDBY 0
+POWERCFG -SETDCVALUEINDEX SCHEME_CURRENT SUB_NONE CONNECTIVITYINSTANDBY 0
 ```
