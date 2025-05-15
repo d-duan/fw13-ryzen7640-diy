@@ -36,7 +36,7 @@ AX210's WIFI 6E and BT drivers downloaded via Intel's official site.
 Follow FW's official [guide](https://guides.frame.work/Guide/Windows+11+Installation+on+the+Framework+Laptop+13+(AMD+Ryzen%E2%84%A2+Series)/214) and make a bootable usb with the LTSC image using Rufus to bypass the network requirement (AMD build specific).\
 Refer to [this thread](https://community.frame.work/t/solved-usb-audio-problems-with-framework-16/60636) for a potential audio issue & fix.
 
-
+Also, MAS' guide points to [this de-telemetry guide](https://gist.github.com/ave9858/a2153957afb053f7d0e7ffdd6c3dcb89) by ave9858. Further debloating could be needed but I will leave it for now. Running LTSC is already without most of the annoying MS features.
 
 ---
 
@@ -49,8 +49,6 @@ IoT LTSC 2024 is a very lean version of Windows 11. However, to bring back some 
 wsreset -i
 ```
 ... and bring back [App Installer](https://apps.microsoft.com/detail/9nblggh4nns1?hl=en-US&gl=AU), Sticky Notes, Paint, Windows Notepad, Calculator etc
-
-Also, MAS' guide points to [this de-telemetry guide](https://gist.github.com/ave9858/a2153957afb053f7d0e7ffdd6c3dcb89) by ave9858. Further debloating could be needed but I will leave it for now. Running LTSC is already without most of the annoying ms features.
 
 ### RMB Context Menu
 
