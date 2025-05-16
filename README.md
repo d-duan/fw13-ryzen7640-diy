@@ -9,7 +9,7 @@
 - [x] AMD Ryzen 7640u
 - [x] Crucial DDR5 5600MHz SODIMM CT2K16G56C46S5, 2x16 GB
 - [x] SK hynix Gold P31, 2TB
-- [x] Additional AX210 WiFi card (reported sleep battery drain [here](https://community.frame.work/t/framework-13-amd-ryzen-ai-sleep-battery-drain-with-intel-ax210-wifi/68959), further testing needed)
+- [x] Additional AX210 WiFi card (reported sleep battery drain [here](https://community.frame.work/t/framework-13-amd-ryzen-ai-sleep-battery-drain-with-intel-ax210-wifi/68959), ~~further testing needed~~ scroll down to see my own testings)
 - [x] General upgrades: 4kg hinge set, 61W battery, and the new 2.8k matte display kit
 - [x] 40x80mm of Honeywell PTM7950 via aliexpress
 
@@ -42,6 +42,48 @@ Also, MAS' guide points to [this de-telemetry guide](https://gist.github.com/ave
 
 ## Notes
 
+### AX210
+
+Follwing @Mikkoter's post on FW's forum, I set out test whether the WiFi card itself is causing excessive battery drain issues after installing the latest WiFi and BT drivers.
+
+After doing Sleep Study and looking at the results, I didn't catch any critical offenders (in red) that pointed to AX210; however, I did have suspicious lid-closed screen wakes that had periodically interrupted the sleep state. 
+
+Digging through Event Viewer > Windows Log > System, I found a Warning at the same time that the first of a series of wake-from-sleeps took place. The Warning message is as follows:
+```
+The description for Event ID 6062 from source Netwtw14 cannot be found. Either the component that raises this event is not installed on your local computer or the installation is corrupted. You can install or repair the component on the local computer.
+If the event originated on another computer, the display information had to be saved with the event.
+
+The following information was included with the event: 
+
+\Device\NDMP14
+Intel(R) Wi-Fi 6E AX210 160MHz
+```
+The timing made me suspect that the waking might have had something to do with this event. Digging around more, I had found [this Intel forum post](https://community.intel.com/t5/Wireless/The-description-for-Event-ID-6062-from-source-Netwtw14-cannot-be/m-p/1670401) that pointed to the same issue, and a resolution that fixes the Netwtw14 cannot be found error.
+
+After rebooting, I'm no longer experiencing the same Warning in Event Viewer, and haven't had any suspicious AX210-related offences in my Sleep Study.
+
+### Modern Standby (S0)
+
+Windows' Modern Standby is notorious for its unreliability. I'm taking some steps to tweak it to my habit and liking:
+
+Use the commands below to set both battery & plugged S0 to be Network Disconnected, even when the option to toggle it is hidden in Control Pane/Power Options:
+```
+powercfg -setacvalueindex scheme_current sub_none connectivityinstandby 0
+powercfg -setdcvalueindex scheme_current sub_none connectivityinstandby 0
+```
+Since I won't need my device to stay connected to the internet or bluetooth while sleeping (if needed, I can keep the machine awake with MS Powertoys,) Disconnected Standby ensures that no network traffic can wake my computer up, though the LTSC version already promises much, much reduced frequency of Windows fetching for updates. FWIW, AX210's wake on WoWLAN/magic packet/pattern match is also turned off in Device Manager > {the WiFi card} > Properties > Advanced.
+
+Using powercfg /SleepStudy, I can see that my laptop slept like a baby last night, with ~4% battery drain over just a bit over 5 hours, in line with Microsoft's S0 targets:
+
+![sleepstufy](https://raw.githubusercontent.com/d-duan/fw13-ryzen7640-diy/refs/heads/main/sleepstudy.png)
+
+Here, I'm going to change the Standby Budget to 3% as a personal preference—I value conserved battery level over ~5s of wait from hibernation to wake;)
+
+```
+powercfg /setacvalueindex scheme_current sub_none standbybudgetpercent 3
+powercfg /setdcvalueindex scheme_current sub_none standbybudgetpercent 3
+```
+
 ### MS Apps 
 
 IoT LTSC 2024 is a very lean version of Windows 11. However, to bring back some of the enhanced apps from the GAC version, reinstall ms store...
@@ -49,6 +91,7 @@ IoT LTSC 2024 is a very lean version of Windows 11. However, to bring back some 
 wsreset -i
 ```
 ... and bring back [App Installer](https://apps.microsoft.com/detail/9nblggh4nns1?hl=en-US&gl=AU), Sticky Notes, Paint, Windows Notepad, Calculator etc
+
 
 ### RMB Context Menu
 
@@ -61,26 +104,4 @@ This forces (/f) an emtpy value (/ve and then nothing) onto the Default value, w
 To restore the new UI, change the Default value back to the .dll:
 ```
 reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve /d "C:\Windows\System32\Windows.UI.FileExplorer.dll"
-```
-
-### Modern Standby (S0)
-
-Windows' Modern Standby is notorious for its unreliability. I'm taking some steps to tweak it to my habit and liking:
-
-I use the commands below to set both battery & plugged S0 to be Network Disconnected, even when the option to toggle it is hidden in Control Pane/Power Options:
-```
-powercfg -setacvalueindex scheme_current sub_none connectivityinstandby 0
-powercfg -setdcvalueindex scheme_current sub_none connectivityinstandby 0
-```
-Since I won't need my device to stay connected to the internet or bluetooth while sleeping (if needed, I can keep the machine awake with MS Powertoys,) Disconnected Standby ensures that no network traffic can wake my computer up, though the LTSC version already promises much, much reduced frequency of Windows fetching for updates. FWIW, AX210's wake on WoWLAN/magic packet/pattern match is also turned off in Device Manager/{the WiFi card}/Properties/Advanced.
-
-Using powercfg /SleepStudy, I can see that my laptop slept like a baby last night, with ~4% battery drain over just a bit over 5 hours, in line with Microsoft's S0 targets:
-
-![sleepstufy](https://raw.githubusercontent.com/d-duan/fw13-ryzen7640-diy/refs/heads/main/sleepstudy.png)
-
-Here, I'm going to change the Standby Budget to 3% as a personal preference—I value conserved battery level over ~5s of wait from hibernation to wake;)
-
-```
-powercfg /setacvalueindex scheme_current sub_none standbybudgetpercent 3
-powercfg /setdcvalueindex scheme_current sub_none standbybudgetpercent 3
 ```
