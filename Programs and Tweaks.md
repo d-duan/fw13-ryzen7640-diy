@@ -11,6 +11,7 @@
 + MS Powertoy
 + ThreeFingerDragOnWindows ([Github](https://github.com/ClementGre/ThreeFingerDragOnWindows)) > bring back three finger drag & select because I prefer it
 + Quick Look ([Github](https://github.com/QL-Win/QuickLook)) > space-bar file preview
++ Ditto > clipboard manager + hotkey clips recall
 
 #### OS Customisation
 + f.lux > better night shift
