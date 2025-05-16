@@ -1,4 +1,4 @@
-## Windows 11 IoT LTSC 2024 (2H24)
+## Windows 11 IoT LTSC 2024 (24H2)
 
 #### Imaging and Backup
 + Veeam Agent for Windows
