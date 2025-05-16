@@ -58,7 +58,7 @@ The following information was included with the event:
 \Device\NDMP14
 Intel(R) Wi-Fi 6E AX210 160MHz
 ```
-The timing made me suspect that the waking might have had something to do with this event. Digging around more, I had found [this Intel forum post](https://community.intel.com/t5/Wireless/The-description-for-Event-ID-6062-from-source-Netwtw14-cannot-be/m-p/1670401) that pointed to the same issue, and a resolution that fixes the Netwtw14 cannot be found error.
+The timing made me suspect that the waking might have had something to do with this event. Digging around more, I had found [this Intel forum post](https://archive.md/Tr9r5)(saved on archive.md just in case) that pointed to the same issue, and a resolution that fixes the Netwtw14 cannot be found error.
 
 After rebooting, I'm no longer experiencing the same Warning in Event Viewer, and haven't had any suspicious AX210-related offences in my Sleep Study.
 
