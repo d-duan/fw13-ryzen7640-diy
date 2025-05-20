@@ -36,7 +36,9 @@ AX210's WIFI 6E and BT drivers downloaded via Intel's official site.
 Follow FW's official [guide](https://guides.frame.work/Guide/Windows+11+Installation+on+the+Framework+Laptop+13+(AMD+Ryzen%E2%84%A2+Series)/214) and make a bootable usb with the LTSC image using Rufus to bypass the network requirement (AMD build specific).\
 Refer to [this thread](https://community.frame.work/t/solved-usb-audio-problems-with-framework-16/60636) for a potential audio issue & fix.
 
-Also, MAS' guide points to [this de-telemetry guide](https://gist.github.com/ave9858/a2153957afb053f7d0e7ffdd6c3dcb89) by ave9858. Further debloating could be needed but I will leave it for now. Running LTSC is already without most of the annoying MS features.
+Also, MAS' guide points to [this de-telemetry guide](https://gist.github.com/ave9858/a2153957afb053f7d0e7ffdd6c3dcb89) by ave9858. Further debloating could be needed but I will leave it for now. Running LTSC is already without most of the annoying MS features.\
+
+Lastly, consider updating the Windows Color Management with [Notebookcheck's calibration](https://www.notebookcheck.net/Framework-Laptop-13-5-Core-Ultra-7-review-New-2-8K-120-Hz-display-with-Arc-8-graphics.874187.0.html) and get the most out of your 2.8k matte display. Their .icm file can be found in their colour testing section. Note that if you are still using their older glossy display, Notebookcheck also has a colour profile download via their review of the Ryzen model.
 
 ---
 
