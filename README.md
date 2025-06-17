@@ -107,3 +107,10 @@ To restore the new UI, change the Default value back to the .dll:
 ```
 reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve /d "C:\Windows\System32\Windows.UI.FileExplorer.dll"
 ```
+
+### Audio Interface Dropoff
+
+To prevent external audio interface seemingly to disconnect itself at random, try the following:
+- don't install 3rd party drivers (Focusrite, for example)
+- turn off USB selective suspend in the power setting. do so via commandlines if such option is hidden in the control panels > power plans setting
+### Audio Interface Dropoff
