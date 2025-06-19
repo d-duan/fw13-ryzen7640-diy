@@ -18,4 +18,4 @@
 + Translucent TB ([Github](https://github.com/TranslucentTB/TranslucentTB?tab=readme-ov-file)), and
 + ExplorerPatcher ([Github](https://github.com/valinet/ExplorerPatcher)) > repositions and styles Win11 taskbar
 + Windhawk
-
++ Change system UI default font back to [SegoeUI](https://github.com/d-duan/fw13-ryzen7640-diy/blob/main/RestoreSegoeUI.reg) (to avoid helvetica black/wide rendering in chrome)
