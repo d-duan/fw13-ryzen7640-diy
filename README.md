@@ -92,7 +92,7 @@ IoT LTSC 2024 is a very lean version of Windows 11. However, to bring back some 
 ```
 wsreset -i
 ```
-... and bring back [App Installer](https://apps.microsoft.com/detail/9nblggh4nns1?hl=en-US&gl=AU), [Game Bar (for quick volume management](https://apps.microsoft.com/detail/9nzkpstsnw4p?hl=en-GB&gl=AU), Sticky Notes, Paint, Windows Notepad, Calculator etc
+... and bring back [App Installer](https://apps.microsoft.com/detail/9nblggh4nns1?hl=en-US&gl=AU), [Game Bar (for quick volume management)](https://apps.microsoft.com/detail/9nzkpstsnw4p?hl=en-GB&gl=AU), Sticky Notes, Paint, Windows Notepad, Calculator etc
 
 
 ### RMB Context Menu
